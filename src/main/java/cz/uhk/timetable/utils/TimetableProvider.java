@@ -4,5 +4,4 @@ import cz.uhk.timetable.model.LocationTimetable;
 
 public interface TimetableProvider {
     LocationTimetable read(String building, String room);
-
 }

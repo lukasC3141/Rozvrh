@@ -18,8 +18,9 @@ public class MockTimetableProvider implements TimetableProvider {
         var activities = List.of(
                 new Activity("PRO1", "Programování 1", "Úterý", LocalTime.of(12,25), LocalTime.of(13, 55), "Kozel"),
                 new Activity("ZMI2", "Zaklady matematiky", "Pondělí", LocalTime.of(8,55), LocalTime.of(10, 25), "Bauer"),
-                new Activity("DIMA", "Diskrétní matematika", "Čtvrek", LocalTime.of(10,35), LocalTime.of(11, 05), "Slaby")
+                new Activity("DIMA", "Diskrétní matematika", "Čtvrtek", LocalTime.of(10,35), LocalTime.of(11, 05), "Slaby")
         );
-        return null;
+        tt.setActivities(activities);
+        return tt;
     }
 }
