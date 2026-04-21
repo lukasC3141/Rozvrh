@@ -22,11 +22,21 @@ public class TimetableFrame extends JFrame {
     }
 
     private void initGui() {
+        String[] buildingList = { "A", "J" };
+        String[] roomList = { "J1", "J2", "J3", "J4", "J5", "J6"};
+        JComboBox<String> roomCombobox = new JComboBox<String>(roomList);
+        JComboBox<String> buildingComboBox = new JComboBox<String>(buildingList);
+
+
+
+
+
         timetable = provider.read("J", "J22");
         tableTimetable = new JTable(new TimetableModel());
-        add(new JScrollPane(tableTimetable), BorderLayout.CENTER);
+        tableTimetable.setAutoCreateRowSorter(true);
 
-        pack();
+        add(new JScrollPane(tableTimetable), BorderLayout.CENTER);
+        add(roomCombobox, BorderLayout.NORTH);pack();
     }
 
     class TimetableModel extends AbstractTableModel {
