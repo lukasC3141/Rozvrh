@@ -13,30 +13,31 @@ public class TimetableFrame extends JFrame {
     private LocationTimetable timetable;
     private TimetableProvider provider = new StagTimetableProvider();
     private JTable tableTimetable;
+    private SearchPanel searchPanel = new SearchPanel(this);
 
     public TimetableFrame(){
         super("FIM rozvrhy");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initGui();
-
     }
 
     private void initGui() {
-        String[] buildingList = { "A", "J" };
-        String[] roomList = { "J1", "J2", "J3", "J4", "J5", "J6"};
-        JComboBox<String> roomCombobox = new JComboBox<String>(roomList);
-        JComboBox<String> buildingComboBox = new JComboBox<String>(buildingList);
-
-
-
-
-
-        timetable = provider.read("J", "J22");
+        timetable = provider.read("J", "J21");
         tableTimetable = new JTable(new TimetableModel());
         tableTimetable.setAutoCreateRowSorter(true);
 
         add(new JScrollPane(tableTimetable), BorderLayout.CENTER);
-        add(roomCombobox, BorderLayout.NORTH);pack();
+        add(searchPanel, BorderLayout.NORTH);
+        pack();
+
+    }
+
+    public void reloadTimetable(String building, String room) {
+        timetable = provider.read(building, room);
+        TimetableModel model = (TimetableModel) tableTimetable.getModel();
+        model.fireTableDataChanged();
+
+        IO.println("Data reloaded for: " + building + " " + room);
     }
 
     class TimetableModel extends AbstractTableModel {
