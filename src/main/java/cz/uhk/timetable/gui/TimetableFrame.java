@@ -22,7 +22,7 @@ public class TimetableFrame extends JFrame {
     }
 
     private void initGui() {
-        timetable = provider.read("J", "J21");
+        timetable = provider.read("J", "J1");
         tableTimetable = new JTable(new TimetableModel());
         tableTimetable.setAutoCreateRowSorter(true);
 

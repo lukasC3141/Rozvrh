@@ -17,6 +17,8 @@ public class SearchPanel extends JPanel {
     };
     private JComboBox<String> roomCombobox = new JComboBox<String>(roomJ);
     private JComboBox<String> buildingComboBox = new JComboBox<String>(building);
+    private JLabel roomText = new JLabel("místnost: ");
+    private JLabel buildingText  = new JLabel("budova: ");
 
     public SearchPanel(TimetableFrame frame) {initGui(frame);}
 
@@ -41,7 +43,9 @@ public class SearchPanel extends JPanel {
             frame.reloadTimetable(buildingSel, roomSel);
         });
 
+        add(buildingText);
         add(buildingComboBox);
+        add(roomText);
         add(roomCombobox);
         add(btnSearch);
     }
